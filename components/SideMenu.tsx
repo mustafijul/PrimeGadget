@@ -3,6 +3,7 @@ import Link from 'next/link';
 import React, { FC } from 'react'
 import Logo from './Logo';
 import { headerData } from '@/constants/data';
+import Socialicons from './Socialicons';
 
 interface SideMenuProps {
   isOpen: boolean;
@@ -12,12 +13,12 @@ interface SideMenuProps {
 const SideMenu: FC<SideMenuProps> = ({ isOpen, onClose }) => {
   return (
     <>
-      {/* Backdrop if we click outside sidebar will close*/}
+      {/* Backdrop, if we click outside, sidebar will close*/}
       <div 
         className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         }`}
-        onClick={onClose}  // Close when clicking backdrop
+        onClick={onClose}  // sidebar will Close when clicking backdrop
       />
       
       {/* Side Menu */}
@@ -46,6 +47,7 @@ const SideMenu: FC<SideMenuProps> = ({ isOpen, onClose }) => {
               }
             </nav>
           </div>
+          <Socialicons></Socialicons>
         </div>
       </div>
     </>
