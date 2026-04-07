@@ -7,8 +7,13 @@ import Carticon from "./Carticon";
 import Favouriteicon from "./Favouriteicon";
 import Signin from "./Signin";
 import Mobilemenu from "./Mobilemenu";
+import { currentUser } from "@clerk/nextjs/server";
+import { log } from "node:console";
+import { ClerkLoaded, Show, UserButton } from "@clerk/nextjs";
 
-export default function Navbar() {
+export default async function Navbar() {
+  const user = await currentUser();
+  log(user)
   return (
     <div className="bg-white py-5">
       <Container className=" flex gap-7 justify-between text-lightColor">
@@ -26,7 +31,15 @@ export default function Navbar() {
           <Searchbar></Searchbar>
           <Carticon></Carticon>
           <Favouriteicon></Favouriteicon>
-          <Signin></Signin>
+          <ClerkLoaded>
+            <Show when="signed-in">
+              <UserButton></UserButton>
+            </Show>
+            {
+              !user &&  <Signin></Signin>
+            }
+            
+          </ClerkLoaded>
         </div>
       </Container>
     </div>
