@@ -13,7 +13,7 @@ import { ClerkLoaded, Show, UserButton } from "@clerk/nextjs";
 
 export default async function Navbar() {
   const user = await currentUser();
-  log(user)
+  // log(user)
   return (
     <div className="bg-white py-5">
       <Container className=" flex gap-7 justify-between text-lightColor">

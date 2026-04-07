@@ -23,10 +23,15 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" className={cn("font-sans", inter.variable)}>
-        <body className="min-h-full flex flex-col font-poppins antialiased">
-          <Navbar></Navbar>
-          {children}
+        <body className="font-poppins antialiased">
+          <div className="min-h-screen flex flex-col">
+             <Navbar></Navbar>
+          <main className="flex-1">
+            {children}
+          </main>
           <Footer></Footer>
+          </div>
+         
         </body>
       </html>
     </ClerkProvider>
